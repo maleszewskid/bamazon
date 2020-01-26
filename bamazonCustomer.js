@@ -1,7 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 var Table = require("cli-table");
-
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -9,12 +8,10 @@ var connection = mysql.createConnection({
     password: "",
     database: "bamazon"
 });
-
 connection.connect(function(err) {
     if (err) throw err;
     console.log("ID: " + connection.threadId);
 });
-
 var Products = function() {
     var query = "Select * FROM products";
     connection.query(query, function(err, res) {
@@ -32,7 +29,6 @@ var Products = function() {
         userPrompt();
     });
 }
-
 function userPrompt() {
     inquirer.prompt([{
             name: "ID",
@@ -46,14 +42,12 @@ function userPrompt() {
             message: "How many items?",
             filter: Number
         },
-
     ]).then(function(answers) {
         var quantityNeeded = answers.Quantity;
         var IDrequested = answers.ID;
         purchase(IDrequested, quantityNeeded);
     });
 };
-
 function purchase(ID, amtNeeded) {
     connection.query('Select * FROM products WHERE item_id = ' + ID, function(err, res) {
         if (err) { console.log(err) };
@@ -69,5 +63,4 @@ function purchase(ID, amtNeeded) {
         Products();
     });
 };
-
 Products();
