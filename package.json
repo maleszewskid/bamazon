@@ -1,10 +1,14 @@
 {
   "name": "bamazon",
   "version": "1.0.0",
-  "description": "storefront online order",
-  "main": "index.js",
+  "description": "online order form",
+  "main": "bamazonCustomer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmaleszewski/bamazon.git"
   },
   "author": "maleszewskid",
   "license": "ISC",
